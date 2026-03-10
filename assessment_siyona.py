@@ -397,7 +397,30 @@ Write a Selenium script to:
 Open https://the-internet.herokuapp.com/download
 Download any file
 Verify the file is downloaded in the Downloads folder using Python.
-'''
+# '''
+# from selenium import webdriver
+# import time
+# import os
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+# driver = webdriver.Chrome(opts)
+# driver.get("https://the-internet.herokuapp.com/download")
+# driver.maximize_window()
+#
+# file_element = driver.find_element("link text", "demo-upload.txt")
+# file_name = file_element.text
+# file_element.click()
+#
+# time.sleep(5)
+#
+# download_path = os.path.join(os.path.expanduser("~"), "Downloads") ##ask
+#
+# file_path = os.path.join(download_path, file_name) ##ask
+# if os.path.exists(file_path):
+#     print("Test Passed: File downloaded successfully")
+# else:
+#     print("Test Failed: File not found")
 
 '''
 Write a script to:
@@ -406,3 +429,29 @@ Add any two products from Books
 Navigate to Shopping Cart
 Verify total number of products added is 2.
 '''
+# from selenium import webdriver
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(options=opts)
+# wait = WebDriverWait(driver, 10)
+#
+# driver.get("https://demowebshop.tricentis.com")
+# driver.find_element("link text", "Books").click()
+# driver.find_element("xpath", "(//input[@value='Add to cart'])[1]").click()
+#
+# wait.until(EC.invisibility_of_element_located(("id","bar-notification")))
+# driver.find_element("xpath", "(//input[@value='Add to cart'])[2]").click()
+#
+# wait.until(EC.invisibility_of_element_located(("id","bar-notification")))
+#
+# driver.find_element("xpath", "//span[text()='Shopping cart']").click()
+# products = driver.find_elements("xpath", "//table[@class='cart']//tbody/tr")
+#
+# if len(products) == 2:
+#     print("Test Passed: 2 products in cart")
+# else:
+#     print("Test Failed")
